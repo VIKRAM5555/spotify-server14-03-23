@@ -13,21 +13,21 @@ apps.post("/", async function (req, res) {
     .findOne({ name: data.name });
 
   if (!userexist) {
-    res.status(404).send({ msg: "Invalid Credential" });
+    res.set("Access-Control-Allow-Origin", "*").status(404).send({ msg: "Invalid Credential" });
   } else {
     var camparePwd = await bcrypt.compare(data.password, userexist.password);
 
     if (camparePwd) {
       const token = jwt.sign({ id: userexist._id }, process.env.PrivateKey);
-      res.send({
+      res.set("Access-Control-Allow-Origin", "*").send({
         msg: "Successful Login",
         token: token,
         userdata: userexist.userData === undefined ? null : userexist.userData,
       });
     } else {
-      res.status(404).send({ msg: "Invalid Credential" });
+      res.set("Access-Control-Allow-Origin", "*").status(404).send({ msg: "Invalid Credential" });
     }
   }
 });
-res.set("Access-Control-Allow-Origin", "*");
+
 export var userroutesigin = apps;
