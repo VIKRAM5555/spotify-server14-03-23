@@ -39,7 +39,7 @@ async function main() {
   }
 }
 export var clients = await main();
-app.use(cors({ origin: "http://localhost:3000" }));
+
 app.use("/signup", Signup);
 
 app.use("/track", tracks);
