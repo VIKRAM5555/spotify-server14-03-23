@@ -19,6 +19,7 @@ apps.post("/", async function (req, res) {
 
     if (camparePwd) {
       const token = jwt.sign({ id: userexist._id }, process.env.PrivateKey);
+
       res.send({
         msg: "Successful Login",
         token: token,
@@ -28,6 +29,7 @@ apps.post("/", async function (req, res) {
       res.status(404).send({ msg: "Invalid Credential" });
     }
   }
+  res.set("Access-Control-Allow-Origin", "*");
 });
 
 export var userroutesigin = apps;
