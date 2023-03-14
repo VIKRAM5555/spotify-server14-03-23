@@ -64,15 +64,13 @@ app.post(
     if (!userExists) {
       let userData = {
         isfavourite: [],
+        // adddesd
       };
-      await clients
-        .db("spotify")
-        .collection("user")
-        .insertOne({
-          name: req.body.userName,
-          password: hashedPassword,
-          userData,
-        });
+      await clients.db("spotify").collection("user").insertOne({
+        name: req.body.userName,
+        password: hashedPassword,
+        userData,
+      });
       return res.json({ success: true, message: ["Successfully Created"] });
     }
 
