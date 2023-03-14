@@ -29,5 +29,5 @@ apps.post("/", async function (req, res) {
     }
   }
 });
-
+res.set("Access-Control-Allow-Origin", "*");
 export var userroutesigin = apps;
