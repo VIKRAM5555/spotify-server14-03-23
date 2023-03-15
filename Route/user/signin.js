@@ -13,7 +13,10 @@ apps.post("/", async function (req, res) {
     .findOne({ name: data.name });
 
   if (!userexist) {
-    res.set("Access-Control-Allow-Origin", "*").status(404).send({ msg: "Invalid Credential" });
+    res
+      .set("Access-Control-Allow-Origin", "*")
+      .status(404)
+      .send({ msg: "Invalid Credential" });
   } else {
     var camparePwd = await bcrypt.compare(data.password, userexist.password);
 
@@ -25,7 +28,10 @@ apps.post("/", async function (req, res) {
         userdata: userexist.userData === undefined ? null : userexist.userData,
       });
     } else {
-      res.set("Access-Control-Allow-Origin", "*").status(404).send({ msg: "Invalid Credential" });
+      res
+        .set("Access-Control-Allow-Origin", "*")
+        .status(404)
+        .send({ msg: "Invalid Credential" });
     }
   }
 });
