@@ -22,7 +22,10 @@ apps.post("/", async function (req, res) {
 
     if (camparePwd) {
       const token = jwt.sign({ id: userexist._id }, process.env.PrivateKey);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1df1d861f399d9d40ab3f48b2b2d687636427f20
       res.set("Access-Control-Allow-Origin", "*").send({
         msg: "Successful Login",
         token: token,
