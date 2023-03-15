@@ -15,7 +15,7 @@ searchs.post("/track", async function (req, res) {
     a.title.toLowerCase().includes(Input.toLowerCase())
   );
   console.log(output);
-  res.send(output);
+  res.set("Access-Control-Allow-Origin", "*").send(output);
 });
 
 export var search = searchs;

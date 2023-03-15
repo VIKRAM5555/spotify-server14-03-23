@@ -32,7 +32,7 @@ apps.post("/favoriteSong", async function (req, res) {
     result = [dataFromClient];
   }
 
-  res.send({
+  res.set("Access-Control-Allow-Origin", "*").send({
     insertedResponse: await clients
       .db("spotify")
       .collection("user")

@@ -5,6 +5,9 @@ export const auth = (req, res, next) => {
     jwt.verify(token, process.env.PrivateKey);
     next();
   } catch (err) {
-    res.status(401).send({ msg: err.message });
+    res
+      .set("Access-Control-Allow-Origin", "*")
+      .status(401)
+      .send({ msg: err.message });
   }
 };

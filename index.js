@@ -25,7 +25,7 @@ const uri =
   "mongodb+srv://narashimman54:lakshmi97@cluster0.n63nudw.mongodb.net/?retryWrites=true&w=majority";
 
 app.use(express.json());
-app.use(cors("*"));
+app.use(cors());
 
 async function main() {
   const client = new MongoClient(uri);
@@ -39,7 +39,7 @@ async function main() {
   }
 }
 export var clients = await main();
-app.use(cors({ origin: "http://localhost:3000" }));
+
 app.use("/signup", Signup);
 
 app.use("/track", tracks);

@@ -47,7 +47,9 @@ app.post(
     // }
 
     if (userExists !== null) {
-      return res.json({ success: false, errors: ["Username already exists"] });
+      return res
+        .set("Access-Control-Allow-Origin", "*")
+        .json({ success: false, errors: ["Username already exists"] });
     }
     const hashedPassword = await hashPassword(req.body.password);
 
@@ -71,10 +73,12 @@ app.post(
         password: hashedPassword,
         userData,
       });
-      return res.json({ success: true, message: ["Successfully Created"] });
+      return res
+        .set("Access-Control-Allow-Origin", "*")
+        .json({ success: true, message: ["Successfully Created"] });
     }
 
-    return res.json({ success: true });
+    return res.set("Access-Control-Allow-Origin", "*").json({ success: true });
   }
 );
 

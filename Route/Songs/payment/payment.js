@@ -14,10 +14,13 @@ const gateway = new braintree.BraintreeGateway({
 app.get("/api/getClientToken", async (req, res) => {
   try {
     const { clientToken } = await gateway.clientToken.generate();
-    res.json({ clientToken });
+    res.set("Access-Control-Allow-Origin", "*").json({ clientToken });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Failed to generate client token" });
+    res
+      .set("Access-Control-Allow-Origin", "*")
+      .status(500)
+      .json({ error: "Failed to generate client token" });
   }
 });
 
@@ -35,14 +38,23 @@ app.post("/api/processPayment", async (req, res) => {
     });
     if (result.success) {
       console.log(result);
-      res.status(200).json({ message: "Paid Successfully" });
+      res
+        .set("Access-Control-Allow-Origin", "*")
+        .status(200)
+        .json({ message: "Paid Successfully" });
     } else {
       console.error(result);
-      res.status(400).json({ error: "Failed Payment" });
+      res
+        .set("Access-Control-Allow-Origin", "*")
+        .status(400)
+        .json({ error: "Failed Payment" });
     }
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Failed to process payment" });
+    res
+      .set("Access-Control-Allow-Origin", "*")
+      .status(500)
+      .json({ error: "Failed to process payment" });
   }
 });
 

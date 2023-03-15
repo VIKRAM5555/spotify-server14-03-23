@@ -10,7 +10,7 @@ admin.post("/", async function (req, res) {
     .find({})
     .toArray();
 
-  res.send(
+  res.set("Access-Control-Allow-Origin", "*").send(
     await clients
       .db("gaikanMusic")
       .collection("songInfo")
