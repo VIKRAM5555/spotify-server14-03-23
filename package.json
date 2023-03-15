@@ -4,11 +4,7 @@
         "dev": "nodemon index.js"
     },
     "type": "module",
-<<<<<<< HEAD
-   
-=======
-    
->>>>>>> 1df1d861f399d9d40ab3f48b2b2d687636427f20
+
     "dependencies": {
         "bcrypt": "^5.1.0",
         "body-parser": "^1.20.2",
